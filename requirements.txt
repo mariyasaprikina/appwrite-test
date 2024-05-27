@@ -1,5 +1,5 @@
 appwrite
-hashlib>=3.11
+hashlib>=20081119
 smtplib
 email
 urllib3
