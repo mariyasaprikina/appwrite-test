@@ -17,6 +17,12 @@ def main(context):
     # You can log messages to the console
     context.log("Hello, Logs!")
 
+    url = "https://pobyt-czasowy-zapis-na-zlozenie-wniosku.mazowieckie.pl/"
+
+    response = get_page_content(url)
+
+    context.log(response)
+
     # If something goes wrong, log an error
     context.error("Hello, Errors!")
 
@@ -35,3 +41,10 @@ def main(context):
             "getInspired": "https://builtwith.appwrite.io",
         }
     )
+
+
+
+def get_page_content(url):  
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.text
