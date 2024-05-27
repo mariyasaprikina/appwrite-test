@@ -1,4 +1,6 @@
 appwrite
+setuptools
+wheel
 email
 urllib3
 warnings
