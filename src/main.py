@@ -7,7 +7,7 @@ import requests
 # This is your Appwrite function
 # It's executed each time we get a request
 def main(context):
-     client = (
+    client = (
          Client()
          .set_endpoint("https://cloud.appwrite.io/v1")
          .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
@@ -19,15 +19,15 @@ def main(context):
 
     # Send an email
     mail_response = mails.create(
-       subject='Test Email',
-       body='This is a test email sent from Appwrite.',
-       to='mariasaprykina07@gmail.com',
-       from_email='your-email@example.com',
-       from_name='Mariya Saprikina',
-       reply_to='your-email@example.com',
-       cc=[],
-       bcc=[]
-    )
+        subject='Test Email',
+        body='This is a test email sent from Appwrite.',
+        to='mariasaprykina07@gmail.com',
+        from_email='your-email@example.com',
+        from_name='Mariya Saprikina',
+        reply_to='your-email@example.com',
+        cc=[],
+        bcc=[]
+        )
 
     context.log(mail_response)
 
