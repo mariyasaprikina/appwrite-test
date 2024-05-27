@@ -1,5 +1,6 @@
 from appwrite.client import Client
 import os
+import requests
 
 
 # This is your Appwrite function
