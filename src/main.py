@@ -1,4 +1,5 @@
 from appwrite.client import Client
+from appwrite.services.mails import Mails
 import os
 import requests
 
@@ -6,23 +7,32 @@ import requests
 # This is your Appwrite function
 # It's executed each time we get a request
 def main(context):
-    # Why not try the Appwrite SDK?
-    #
-    # client = (
-    #     Client()
-    #     .set_endpoint("https://cloud.appwrite.io/v1")
-    #     .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-    #     .set_key(os.environ["APPWRITE_API_KEY"])
-    # )
+     client = (
+         Client()
+         .set_endpoint("https://cloud.appwrite.io/v1")
+         .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
+         .set_key(os.environ["APPWRITE_API_KEY"])
+     )
+
+    # Create an instance of the Mails service
+    mails = Mails(client)
+
+    # Send an email
+    mail_response = mails.create(
+       subject='Test Email',
+       body='This is a test email sent from Appwrite.',
+       to='mariasaprykina07@gmail.com',
+       from_email='your-email@example.com',
+       from_name='Mariya Saprikina',
+       reply_to='your-email@example.com',
+       cc=[],
+       bcc=[]
+    )
+
+    context.log(mail_response)
 
     # You can log messages to the console
     context.log("Hello, Logs!")
-
-    url = "https://pobyt-czasowy-zapis-na-zlozenie-wniosku.mazowieckie.pl/"
-
-    response = get_page_content(url)
-
-    context.log(response)
 
     # If something goes wrong, log an error
     context.error("Hello, Errors!")
