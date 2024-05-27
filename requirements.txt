@@ -1,5 +1,4 @@
 appwrite
-smtplib
 email
 urllib3
 warnings
